@@ -4,8 +4,12 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   useEffect(() => {
-    document.documentElement.classList.add(localStorage.getItem("theme"));
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      document.documentElement.classList.add(theme);
+    }
   }, []);
+
   return (
     <>
       <Navbar />

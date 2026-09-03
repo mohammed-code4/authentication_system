@@ -1,9 +1,10 @@
+import type { SignInType, SignUpType } from "@/types/auth.type";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const signUpUser = createAsyncThunk(
   "auth/signupUser",
-  async (userData, { rejectWithValue }) => {
+  async (userData: SignUpType, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
         "https://note-sigma-black.vercel.app/api/v1/users/signUp",
@@ -19,7 +20,7 @@ export const signUpUser = createAsyncThunk(
 
 export const signInUser = createAsyncThunk(
   "auth/signinUser",
-  async (userData, { rejectWithValue }) => {
+  async (userData: SignInType, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
         "https://note-sigma-black.vercel.app/api/v1/users/signIn",

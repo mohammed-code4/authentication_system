@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface initialStateType {
-  theme: string;
+  theme: string | undefined;
 }
 
 const initialState: initialStateType = {

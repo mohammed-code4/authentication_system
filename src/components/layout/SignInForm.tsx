@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store";
 import { useForm } from "react-hook-form";
-import type { SigninType } from "@/types/signinType.type";
+import type { SigninForm } from "@/types/signinForm.type";
 import { signinSchema } from "@/schema/SigninSchema";
 
 const SignInForm = () => {
@@ -26,7 +26,7 @@ const SignInForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<SigninType>({
+  } = useForm<SigninForm>({
     defaultValues: {
       email: "",
       password: "",
@@ -34,7 +34,7 @@ const SignInForm = () => {
     resolver: zodResolver(signinSchema),
   });
 
-  const handleSignUp = (data: SigninType) => {
+  const handleSignUp = (data: SigninForm) => {
     dispatch<any>(signInUser(data));
   };
 
@@ -67,7 +67,6 @@ const SignInForm = () => {
             <Input
               id="email"
               {...register("email")}
-              name="email"
               type="email"
               placeholder="Your Email"
             />
@@ -79,7 +78,6 @@ const SignInForm = () => {
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
-              name="password"
               {...register("password")}
               type="password"
               placeholder="••••••••"

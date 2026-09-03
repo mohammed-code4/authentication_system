@@ -11,7 +11,7 @@ import {
 import { FieldError } from "@/components/ui/field";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import type { SignupType } from "@/types/signupType.type";
+import type { SignupForm } from "@/types/signupForm.type";
 import { signupSchema } from "@/schema/SignupSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,18 +33,18 @@ const SignUpForm = () => {
     setError,
     reset,
     formState: { errors },
-  } = useForm<SignupType>({
+  } = useForm<SignupForm>({
     defaultValues: {
       name: "",
       email: "",
       password: "",
-      age: null,
+      age: "",
       phone: "",
     },
     resolver: zodResolver(signupSchema),
   });
 
-  const handleSignUp = (data: SignupType) => {
+  const handleSignUp = (data: SignupForm) => {
     // Check Age
     const ageAsNum = Number(data.age);
     if (ageAsNum < 18) {
@@ -92,7 +92,6 @@ const SignUpForm = () => {
             <Input
               id="name"
               {...register("name")}
-              name="name"
               type="text"
               placeholder="Enter Your Name"
             />
@@ -105,7 +104,6 @@ const SignUpForm = () => {
             <Input
               id="email"
               {...register("email")}
-              name="email"
               type="email"
               placeholder="Your Email"
             />
@@ -117,7 +115,6 @@ const SignUpForm = () => {
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
-              name="password"
               {...register("password")}
               type="password"
               placeholder="••••••••"
@@ -133,7 +130,6 @@ const SignUpForm = () => {
             <Input
               id="age"
               {...register("age")}
-              name="age"
               type="number"
               placeholder=" your Age"
             />
@@ -146,7 +142,6 @@ const SignUpForm = () => {
             <Input
               id="phone"
               {...register("phone")}
-              name="phone"
               type="tel"
               placeholder="01*********"
             />

@@ -39,7 +39,7 @@ createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
     <ToastContainer
       position="top-center"
-      theme={localStorage.getItem("theme")}
+      theme={localStorage.getItem("theme") === "dark" ? "dark" : "light"}
     />
   </Provider>,
 );
