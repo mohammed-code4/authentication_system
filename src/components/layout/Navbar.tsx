@@ -4,6 +4,7 @@ import { logout } from "@/store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import ThemeToggleButton from "./ToggleThemeButton";
 const Navbar = () => {
   const { token } = useSelector((state: RootState) => {
     return state.auth;
@@ -44,6 +45,7 @@ const Navbar = () => {
               </Link>
             </>
           )}
+          <ThemeToggleButton />
         </div>
       </div>
     </header>

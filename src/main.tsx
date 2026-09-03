@@ -37,6 +37,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <RouterProvider router={router} />
-    <ToastContainer position="top-center" theme="dark" />
+    <ToastContainer
+      position="top-center"
+      theme={localStorage.getItem("theme")}
+    />
   </Provider>,
 );
